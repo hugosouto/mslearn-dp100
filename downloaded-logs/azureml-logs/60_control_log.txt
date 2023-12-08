@@ -1,0 +1,1768 @@
+[2023-12-08T17:39:40.843992] Using urllib.request Python 3.0 or later
+Streaming log file azureml-logs/60_control_log.txt
+Starting the daemon thread to refresh tokens in background for process with pid = 132535
+Running: ['/bin/bash', '/tmp/azureml_runs/mslearn-diabetes_1702057179_5cd71132/azureml-environment-setup/docker_env_checker.sh']
+
+Materialized image not found on target: azureml/azureml_46e63a647aa93dc08547cc8aca7e41e8
+
+
+[2023-12-08T17:39:41.273968] Logging experiment preparation status in history service.
+Running: ['/bin/bash', '/tmp/azureml_runs/mslearn-diabetes_1702057179_5cd71132/azureml-environment-setup/docker_env_builder.sh']
+Running: ['nvidia-docker', 'build', '-f', 'azureml-environment-setup/Dockerfile', '-t', 'azureml/azureml_46e63a647aa93dc08547cc8aca7e41e8', '.']
+Sending build context to Docker daemon  1.135MB
+Step 1/17 : FROM mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:20230509.v1@sha256:21a5aff01e75574d94cd25802026a9ac5be1936dc2afe2973537f2c47abd4bc5
+mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:20230509.v1@sha256:21a5aff01e75574d94cd25802026a9ac5be1936dc2afe2973537f2c47abd4bc5: Pulling from azureml/openmpi4.1.0-ubuntu20.04
+99803d4b97f3: Pulling fs layer
+70360b991f81: Pulling fs layer
+be3bbb711686: Pulling fs layer
+a4af251bcb46: Pulling fs layer
+38baff24aff5: Pulling fs layer
+050145919e6a: Pulling fs layer
+6b155a65e6c0: Pulling fs layer
+7e0748d6ff6c: Pulling fs layer
+430355abe702: Pulling fs layer
+06e63bb8b14a: Pulling fs layer
+a4af251bcb46: Waiting
+38baff24aff5: Waiting
+050145919e6a: Waiting
+6b155a65e6c0: Waiting
+7e0748d6ff6c: Waiting
+430355abe702: Waiting
+06e63bb8b14a: Waiting
+be3bbb711686: Verifying Checksum
+be3bbb711686: Download complete
+99803d4b97f3: Verifying Checksum
+99803d4b97f3: Download complete
+a4af251bcb46: Verifying Checksum
+a4af251bcb46: Download complete
+38baff24aff5: Verifying Checksum
+38baff24aff5: Download complete
+6b155a65e6c0: Verifying Checksum
+6b155a65e6c0: Download complete
+050145919e6a: Verifying Checksum
+050145919e6a: Download complete
+7e0748d6ff6c: Verifying Checksum
+7e0748d6ff6c: Download complete
+430355abe702: Verifying Checksum
+430355abe702: Download complete
+06e63bb8b14a: Verifying Checksum
+06e63bb8b14a: Download complete
+70360b991f81: Verifying Checksum
+70360b991f81: Download complete
+99803d4b97f3: Pull complete
+70360b991f81: Pull complete
+be3bbb711686: Pull complete
+a4af251bcb46: Pull complete
+38baff24aff5: Pull complete
+050145919e6a: Pull complete
+6b155a65e6c0: Pull complete
+7e0748d6ff6c: Pull complete
+430355abe702: Pull complete
+06e63bb8b14a: Pull complete
+Digest: sha256:21a5aff01e75574d94cd25802026a9ac5be1936dc2afe2973537f2c47abd4bc5
+Status: Downloaded newer image for mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:20230509.v1@sha256:21a5aff01e75574d94cd25802026a9ac5be1936dc2afe2973537f2c47abd4bc5
+ ---> cc73fcec3204
+Step 2/17 : USER root
+ ---> Running in ee2f2de172e9
+Removing intermediate container ee2f2de172e9
+ ---> 72c3dbd8e718
+Step 3/17 : RUN mkdir -p $HOME/.cache
+ ---> Running in 8fb73a4318cb
+Removing intermediate container 8fb73a4318cb
+ ---> 061bfc6cdadb
+Step 4/17 : WORKDIR /
+ ---> Running in 5a64856d8663
+Removing intermediate container 5a64856d8663
+ ---> bee11ea12f5c
+Step 5/17 : COPY azureml-environment-setup/99brokenproxy /etc/apt/apt.conf.d/
+ ---> b10c86119de4
+Step 6/17 : RUN if dpkg --compare-versions `conda --version | grep -oE '[^ ]+$'` lt 4.4.11; then conda install conda==4.4.11; fi
+ ---> Running in eaf5141d1c53
+Removing intermediate container eaf5141d1c53
+ ---> 1d16b168fb10
+Step 7/17 : COPY azureml-environment-setup/mutated_conda_dependencies.yml azureml-environment-setup/mutated_conda_dependencies.yml
+ ---> 49ba67eb500e
+Step 8/17 : RUN ldconfig /usr/local/cuda/lib64/stubs && conda env create -p /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61 -f azureml-environment-setup/mutated_conda_dependencies.yml && rm -rf "$HOME/.cache/pip" && conda clean -aqy && CONDA_ROOT_DIR=$(conda info --root) && rm -rf "$CONDA_ROOT_DIR/pkgs" && find "$CONDA_ROOT_DIR" -type d -name __pycache__ -exec rm -rf {} + && ldconfig
+ ---> Running in a971deadfdf8
+Retrieving notices: ...working... done
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+Downloading and Extracting Packages
+mkl_fft-1.3.0        | 170 KB    |            |   0% 
+libgfortran4-7.5.0   | 995 KB    |            |   0% [A
+
+setuptools-58.0.4    | 788 KB    |            |   0% [A[A
+
+
+libgomp-11.2.0       | 474 KB    |            |   0% [A[A[A
+
+
+
+pytz-2021.3          | 171 KB    |            |   0% [A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   |            |   0% [A[A[A[A[A
+
+
+
+
+
+zlib-1.2.13          | 103 KB    |            |   0% [A[A[A[A[A[A
+
+
+
+
+
+
+pip-21.2.2           | 1.8 MB    |            |   0% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+ncurses-6.0          | 781 KB    |            |   0% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+openssl-1.0.2u       | 2.2 MB    |            |   0% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+pandas-1.1.5         | 8.2 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+wheel-0.37.1         | 33 KB     |            |   0% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+tk-8.6.12            | 3.0 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+blas-1.0             | 6 KB      |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+_openmp_mutex-5.1    | 21 KB     |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+numpy-base-1.19.2    | 4.1 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+libstdcxx-ng-11.2.0  | 4.7 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+scipy-1.5.2          | 14.4 MB   |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+certifi-2021.5.30    | 139 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mkl_fft-1.3.0        | 170 KB    | ########## | 100% 
+libgfortran4-7.5.0   | 995 KB    | 9          |  10% [A
+
+
+libgomp-11.2.0       | 474 KB    | ##         |  20% [A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   |            |   0% [A[A[A[A[A
+
+setuptools-58.0.4    | 788 KB    | ########## | 100% [A[A
+
+setuptools-58.0.4    | 788 KB    | ########## | 100% [A[A
+
+
+
+
+
+zlib-1.2.13          | 103 KB    | #5         |  15% [A[A[A[A[A[A
+
+
+
+
+
+
+pip-21.2.2           | 1.8 MB    |            |   1% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+ncurses-6.0          | 781 KB    | 2          |   2% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+openssl-1.0.2u       | 2.2 MB    |            |   1% [A[A[A[A[A[A[A[A[A
+
+
+
+pytz-2021.3          | 171 KB    | 9          |   9% [A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | 9          |  10% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+pandas-1.1.5         | 8.2 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+wheel-0.37.1         | 33 KB     | ####9      |  49% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+tk-8.6.12            | 3.0 MB    |            |   1% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+libgomp-11.2.0       | 474 KB    | ########## | 100% [A[A[A
+
+
+libgomp-11.2.0       | 474 KB    | ########## | 100% [A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+blas-1.0             | 6 KB      | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+openssl-1.0.2u       | 2.2 MB    | ########7  |  88% [A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | #6         |  17% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+pandas-1.1.5         | 8.2 MB    | #9         |  20% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+_openmp_mutex-5.1    | 21 KB     | #######6   |  77% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+numpy-base-1.19.2    | 4.1 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+libgfortran4-7.5.0   | 995 KB    | ########## | 100% [A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+libstdcxx-ng-11.2.0  | 4.7 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+tk-8.6.12            | 3.0 MB    | ######8    |  68% [A[A[A[A[A[A[A[A[A[A[A[A
+libgfortran4-7.5.0   | 995 KB    | ########## | 100% [A
+
+
+
+
+
+zlib-1.2.13          | 103 KB    | ########## | 100% [A[A[A[A[A[A
+
+
+
+
+
+zlib-1.2.13          | 103 KB    | ########## | 100% [A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | ##3        |  23% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+pandas-1.1.5         | 8.2 MB    | ####3      |  43% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+numpy-base-1.19.2    | 4.1 MB    | ######8    |  69% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+libstdcxx-ng-11.2.0  | 4.7 MB    | ##7        |  28% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+scipy-1.5.2          | 14.4 MB   |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | ##9        |  29% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+pandas-1.1.5         | 8.2 MB    | ######7    |  67% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+certifi-2021.5.30    | 139 KB    | #1         |  11% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+libstdcxx-ng-11.2.0  | 4.7 MB    | #########  |  91% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+scipy-1.5.2          | 14.4 MB   | ##2        |  22% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | ###7       |  38% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+ncurses-6.0          | 781 KB    | ########## | 100% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+pandas-1.1.5         | 8.2 MB    | #########9 |  99% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+ncurses-6.0          | 781 KB    | ########## | 100% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+scipy-1.5.2          | 14.4 MB   | ###8       |  39% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | ####8      |  49% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+scipy-1.5.2          | 14.4 MB   | #####3     |  53% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+pip-21.2.2           | 1.8 MB    | ########## | 100% [A[A[A[A[A[A[A
+
+
+
+
+
+
+pip-21.2.2           | 1.8 MB    | ########## | 100% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | #####4     |  55% [A[A[A[A[A
+
+
+
+pytz-2021.3          | 171 KB    | ########## | 100% [A[A[A[A
+
+
+
+pytz-2021.3          | 171 KB    | ########## | 100% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+scipy-1.5.2          | 14.4 MB   | ######5    |  65% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+wheel-0.37.1         | 33 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+wheel-0.37.1         | 33 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+blas-1.0             | 6 KB      | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | ######4    |  64% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+scipy-1.5.2          | 14.4 MB   | ########1  |  81% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+openssl-1.0.2u       | 2.2 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+_openmp_mutex-5.1    | 21 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+_openmp_mutex-5.1    | 21 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | #######1   |  71% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+scipy-1.5.2          | 14.4 MB   | #########4 |  94% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+tk-8.6.12            | 3.0 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | #######7   |  78% [A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | ########3  |  84% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+numpy-base-1.19.2    | 4.1 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+numpy-base-1.19.2    | 4.1 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+certifi-2021.5.30    | 139 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+certifi-2021.5.30    | 139 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | ########8  |  89% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+libstdcxx-ng-11.2.0  | 4.7 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | #########8 |  98% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+pandas-1.1.5         | 8.2 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+scipy-1.5.2          | 14.4 MB   | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+python-3.6.2         | 23.6 MB   | ########## | 100% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     
+                                                     [A
+
+                                                     [A[A
+
+
+                                                     [A[A[A
+
+
+
+                                                     [A[A[A[A
+
+
+
+
+                                                     [A[A[A[A[A
+
+
+
+
+
+                                                     [A[A[A[A[A[A
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+[A
+
+[A[A
+
+
+[A[A[A
+
+
+
+[A[A[A[A
+
+
+
+
+[A[A[A[A[A
+
+
+
+
+
+[A[A[A[A[A[A
+
+
+
+
+
+
+[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... 
+
+    Installed package of scikit-learn can be accelerated using scikit-learn-intelex.
+    More details are available here: https://intel.github.io/scikit-learn-intelex
+
+    For example:
+
+        $ conda install scikit-learn-intelex
+        $ python -m sklearnex my_application.py
+
+    
+
+done
+Installing pip dependencies: ...working... Ran pip subprocess with arguments:
+['/azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/bin/python', '-m', 'pip', 'install', '-U', '-r', '/azureml-environment-setup/condaenv.ujjjcz_u.requirements.txt', '--exists-action=b']
+Pip subprocess output:
+Collecting azureml-defaults
+  Downloading azureml_defaults-1.54.0-py3-none-any.whl (2.0 kB)
+Collecting azureml-mlflow
+  Downloading azureml_mlflow-1.48.0-py3-none-any.whl (812 kB)
+Collecting azureml-defaults
+  Downloading azureml_defaults-1.53.0-py3-none-any.whl (2.0 kB)
+  Downloading azureml_defaults-1.52.0-py3-none-any.whl (2.0 kB)
+  Downloading azureml_defaults-1.51.0-py3-none-any.whl (2.0 kB)
+  Downloading azureml_defaults-1.50.0-py3-none-any.whl (2.0 kB)
+  Downloading azureml_defaults-1.49.0-py3-none-any.whl (2.0 kB)
+  Downloading azureml_defaults-1.48.0-py3-none-any.whl (2.0 kB)
+Collecting azureml-inference-server-http~=0.7.2
+  Downloading azureml_inference_server_http-0.7.7-py3-none-any.whl (56 kB)
+Collecting azureml-dataset-runtime[fuse]~=1.48.0
+  Downloading azureml_dataset_runtime-1.48.0-py3-none-any.whl (2.2 kB)
+Collecting azureml-defaults
+  Downloading azureml_defaults-1.47.0-py3-none-any.whl (2.0 kB)
+Collecting configparser==3.7.4
+  Downloading configparser-3.7.4-py2.py3-none-any.whl (22 kB)
+Collecting azureml-dataset-runtime[fuse]~=1.47.0
+  Downloading azureml_dataset_runtime-1.47.0-py3-none-any.whl (2.2 kB)
+Collecting azureml-core~=1.47.0
+  Downloading azureml_core-1.47.0-py3-none-any.whl (3.1 MB)
+Collecting json-logging-py==0.2
+  Downloading json-logging-py-0.2.tar.gz (3.6 kB)
+Collecting azure-storage-blob<=12.13.0,>=12.5.0
+  Downloading azure_storage_blob-12.13.0-py3-none-any.whl (377 kB)
+Collecting cryptography
+  Downloading cryptography-40.0.2-cp36-abi3-manylinux_2_28_x86_64.whl (3.7 MB)
+Requirement already satisfied: python-dateutil<3.0.0,>=2.7.3 in /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/lib/python3.6/site-packages (from azureml-mlflow->-r /azureml-environment-setup/condaenv.ujjjcz_u.requirements.txt (line 2)) (2.8.2)
+Collecting mlflow-skinny
+  Downloading mlflow_skinny-1.23.1-py3-none-any.whl (3.2 MB)
+Collecting azure-identity
+  Downloading azure_identity-1.10.0-py3-none-any.whl (134 kB)
+Collecting msrest>=0.6.18
+  Downloading msrest-0.7.1-py3-none-any.whl (85 kB)
+Collecting jsonpickle
+  Downloading jsonpickle-2.2.0-py2.py3-none-any.whl (39 kB)
+Collecting azure-common<2.0.0,>=1.1
+  Downloading azure_common-1.1.28-py2.py3-none-any.whl (14 kB)
+Collecting azure-core!=1.22.0,<2.0.0,>=1.8.0
+  Downloading azure_core-1.24.2-py3-none-any.whl (178 kB)
+Collecting azure-mgmt-core<2.0.0,>=1.2.0
+  Downloading azure_mgmt_core-1.3.2-py3-none-any.whl (26 kB)
+Requirement already satisfied: six>=1.11.0 in /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/lib/python3.6/site-packages (from azure-core!=1.22.0,<2.0.0,>=1.8.0->azureml-mlflow->-r /azureml-environment-setup/condaenv.ujjjcz_u.requirements.txt (line 2)) (1.16.0)
+Collecting requests>=2.18.4
+  Downloading requests-2.27.1-py2.py3-none-any.whl (63 kB)
+Collecting typing-extensions>=4.0.1
+  Downloading typing_extensions-4.1.1-py3-none-any.whl (26 kB)
+Collecting azure-graphrbac<1.0.0,>=0.40.0
+  Downloading azure_graphrbac-0.61.1-py2.py3-none-any.whl (141 kB)
+Collecting azure-mgmt-containerregistry<11,>=8.2.0
+  Downloading azure_mgmt_containerregistry-10.0.0-py3-none-any.whl (1.2 MB)
+Collecting urllib3<2.0.0,>=1.23
+  Downloading urllib3-1.26.18-py2.py3-none-any.whl (143 kB)
+Collecting contextlib2<22.0.0
+  Downloading contextlib2-21.6.0-py2.py3-none-any.whl (13 kB)
+Collecting knack~=0.10.0
+  Downloading knack-0.10.1-py3-none-any.whl (61 kB)
+Collecting msal<2.0.0,>=1.15.0
+  Downloading msal-1.26.0-py2.py3-none-any.whl (99 kB)
+Collecting PyJWT<3.0.0
+  Downloading PyJWT-2.4.0-py3-none-any.whl (18 kB)
+Collecting SecretStorage<4.0.0
+  Downloading SecretStorage-3.3.3-py3-none-any.whl (15 kB)
+Collecting pathspec<1.0.0
+  Downloading pathspec-0.9.0-py2.py3-none-any.whl (31 kB)
+Collecting ndg-httpsclient<=0.5.1
+  Downloading ndg_httpsclient-0.5.1-py3-none-any.whl (34 kB)
+Collecting jmespath<2.0.0
+  Downloading jmespath-0.10.0-py2.py3-none-any.whl (24 kB)
+Collecting humanfriendly<11.0,>=4.7
+  Downloading humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
+Collecting azure-mgmt-storage<21.0.0,>=16.0.0
+  Downloading azure_mgmt_storage-20.0.0-py3-none-any.whl (2.0 MB)
+Collecting packaging<22.0,>=20.0
+  Downloading packaging-21.3-py3-none-any.whl (40 kB)
+Collecting backports.tempfile
+  Downloading backports.tempfile-1.0-py2.py3-none-any.whl (4.4 kB)
+Collecting argcomplete<3
+  Downloading argcomplete-2.1.2-py3-none-any.whl (37 kB)
+Collecting adal<=1.2.7,>=1.2.0
+  Downloading adal-1.2.7-py2.py3-none-any.whl (55 kB)
+Collecting pkginfo
+  Downloading pkginfo-1.9.6-py3-none-any.whl (30 kB)
+Collecting azure-mgmt-keyvault<11.0.0,>=0.40.0
+  Downloading azure_mgmt_keyvault-10.0.0-py3-none-any.whl (489 kB)
+Collecting azure-mgmt-authorization<3,>=0.40.0
+  Downloading azure_mgmt_authorization-2.0.0-py2.py3-none-any.whl (465 kB)
+Collecting msal-extensions<=1.0.0,>=0.3.0
+  Downloading msal_extensions-1.0.0-py2.py3-none-any.whl (19 kB)
+Requirement already satisfied: pytz in /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/lib/python3.6/site-packages (from azureml-core~=1.47.0->azureml-defaults->-r /azureml-environment-setup/condaenv.ujjjcz_u.requirements.txt (line 1)) (2021.3)
+Collecting azure-mgmt-resource<22.0.0,>=15.0.0
+  Downloading azure_mgmt_resource-21.1.0-py3-none-any.whl (1.8 MB)
+Collecting msrestazure<=0.6.4,>=0.4.33
+  Downloading msrestazure-0.6.4-py2.py3-none-any.whl (40 kB)
+Collecting docker<7.0.0
+  Downloading docker-5.0.3-py2.py3-none-any.whl (146 kB)
+Collecting pyopenssl<23.0.0
+  Downloading pyOpenSSL-22.1.0-py3-none-any.whl (57 kB)
+Collecting paramiko<3.0.0,>=2.0.8
+  Downloading paramiko-2.12.0-py2.py3-none-any.whl (213 kB)
+Collecting importlib-metadata<6,>=0.23
+  Downloading importlib_metadata-4.8.3-py3-none-any.whl (17 kB)
+Requirement already satisfied: numpy!=1.19.3 in /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/lib/python3.6/site-packages (from azureml-dataset-runtime[fuse]~=1.47.0->azureml-defaults->-r /azureml-environment-setup/condaenv.ujjjcz_u.requirements.txt (line 1)) (1.19.2)
+Collecting pyarrow<=9.0.0,>=0.17.0
+  Downloading pyarrow-6.0.1-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25.6 MB)
+Collecting azureml-dataprep<4.6.0a,>=4.5.0a
+  Downloading azureml_dataprep-4.5.7-py3-none-any.whl (43.4 MB)
+Collecting fusepy<4.0.0,>=3.0.1
+  Downloading fusepy-3.0.1.tar.gz (11 kB)
+Collecting cloudpickle<3.0.0,>=1.1.0
+  Downloading cloudpickle-2.2.1-py3-none-any.whl (25 kB)
+Collecting azure-identity
+  Downloading azure_identity-1.7.0-py2.py3-none-any.whl (129 kB)
+Collecting azureml-dataprep-native<39.0.0,>=38.0.0
+  Downloading azureml_dataprep_native-38.0.0-cp36-cp36m-manylinux1_x86_64.whl (1.3 MB)
+Collecting dotnetcore2<4.0.0,>=3.0.0
+  Downloading dotnetcore2-3.1.23-py3-none-manylinux1_x86_64.whl (31.1 MB)
+Collecting jsonschema
+  Downloading jsonschema-3.2.0-py2.py3-none-any.whl (56 kB)
+Collecting azureml-dataprep-rslex~=2.11.0dev0
+  Downloading azureml_dataprep_rslex-2.11.4-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (15.3 MB)
+Collecting pyyaml<7.0.0,>=5.1.0
+  Downloading PyYAML-6.0.1-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (677 kB)
+Collecting msal-extensions<=1.0.0,>=0.3.0
+  Downloading msal_extensions-0.3.1-py2.py3-none-any.whl (18 kB)
+Collecting gunicorn==20.1.0
+  Downloading gunicorn-20.1.0-py3-none-any.whl (79 kB)
+Collecting flask-cors~=3.0.1
+  Downloading Flask_Cors-3.0.10-py2.py3-none-any.whl (14 kB)
+Collecting inference-schema~=1.4.0
+  Downloading inference_schema-1.4.2.1-py3-none-any.whl (21 kB)
+Collecting opencensus-ext-azure~=1.1.0
+  Downloading opencensus_ext_azure-1.1.12-py2.py3-none-any.whl (43 kB)
+Requirement already satisfied: setuptools>=3.0 in /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/lib/python3.6/site-packages (from gunicorn==20.1.0->azureml-inference-server-http~=0.7.2->azureml-defaults->-r /azureml-environment-setup/condaenv.ujjjcz_u.requirements.txt (line 1)) (58.0.4)
+Collecting cffi>=1.12
+  Downloading cffi-1.15.1-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.whl (402 kB)
+Collecting pycparser
+  Downloading pycparser-2.21-py2.py3-none-any.whl (118 kB)
+Collecting websocket-client>=0.32.0
+  Downloading websocket_client-1.3.1-py3-none-any.whl (54 kB)
+Collecting distro>=1.2.0
+  Downloading distro-1.8.0-py3-none-any.whl (20 kB)
+Collecting Flask>=0.9
+  Downloading Flask-2.0.3-py3-none-any.whl (95 kB)
+Collecting Werkzeug>=2.0
+  Downloading Werkzeug-2.0.3-py3-none-any.whl (289 kB)
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.0.1-py3-none-any.whl (18 kB)
+Collecting click>=7.1.2
+  Downloading click-8.0.4-py3-none-any.whl (97 kB)
+Collecting Jinja2>=3.0
+  Downloading Jinja2-3.0.3-py3-none-any.whl (133 kB)
+Collecting zipp>=0.5
+  Downloading zipp-3.6.0-py3-none-any.whl (5.3 kB)
+Collecting wrapt<=1.12.1,>=1.11.1
+  Downloading wrapt-1.12.1.tar.gz (27 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.0.1-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (30 kB)
+Collecting pygments
+  Downloading Pygments-2.14.0-py3-none-any.whl (1.1 MB)
+Collecting tabulate
+  Downloading tabulate-0.8.10-py3-none-any.whl (29 kB)
+Collecting portalocker<3,>=1.0
+  Downloading portalocker-2.7.0-py2.py3-none-any.whl (15 kB)
+Requirement already satisfied: certifi>=2017.4.17 in /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/lib/python3.6/site-packages (from msrest>=0.6.18->azureml-mlflow->-r /azureml-environment-setup/condaenv.ujjjcz_u.requirements.txt (line 2)) (2021.5.30)
+Collecting isodate>=0.6.0
+  Downloading isodate-0.6.1-py2.py3-none-any.whl (41 kB)
+Collecting requests-oauthlib>=0.5.0
+  Downloading requests_oauthlib-1.3.1-py2.py3-none-any.whl (23 kB)
+Collecting pyasn1>=0.1.1
+  Downloading pyasn1-0.5.1-py2.py3-none-any.whl (84 kB)
+Collecting psutil>=5.6.3
+  Downloading psutil-5.9.6-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (283 kB)
+Collecting opencensus<1.0.0,>=0.11.3
+  Downloading opencensus-0.11.3-py2.py3-none-any.whl (128 kB)
+Collecting google-api-core<3.0.0,>=1.0.0
+  Downloading google_api_core-2.8.2-py3-none-any.whl (114 kB)
+Collecting opencensus-context>=0.1.3
+  Downloading opencensus_context-0.1.3-py2.py3-none-any.whl (5.1 kB)
+Collecting protobuf<5.0.0dev,>=3.15.0
+  Downloading protobuf-3.19.6-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+Collecting googleapis-common-protos<2.0dev,>=1.56.2
+  Downloading googleapis_common_protos-1.56.3-py2.py3-none-any.whl (211 kB)
+Collecting google-auth<3.0dev,>=1.25.0
+  Downloading google_auth-2.22.0-py2.py3-none-any.whl (181 kB)
+Collecting pyasn1-modules>=0.2.1
+  Downloading pyasn1_modules-0.3.0-py2.py3-none-any.whl (181 kB)
+Collecting rsa<5,>=3.1.4
+  Downloading rsa-4.9-py3-none-any.whl (34 kB)
+Collecting cachetools<6.0,>=2.0.0
+  Downloading cachetools-4.2.4-py3-none-any.whl (10 kB)
+Collecting contextvars
+  Downloading contextvars-2.4.tar.gz (9.6 kB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Downloading pyparsing-3.0.7-py3-none-any.whl (98 kB)
+Collecting bcrypt>=3.1.3
+  Downloading bcrypt-4.0.1-cp36-abi3-manylinux_2_28_x86_64.whl (593 kB)
+Collecting pynacl>=1.0.1
+  Downloading PyNaCl-1.5.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl (856 kB)
+Collecting cryptography
+  Downloading cryptography-38.0.4-cp36-abi3-manylinux_2_28_x86_64.whl (4.2 MB)
+Collecting idna<4,>=2.5
+  Downloading idna-3.6-py3-none-any.whl (61 kB)
+Collecting charset-normalizer~=2.0.0
+  Downloading charset_normalizer-2.0.12-py3-none-any.whl (39 kB)
+Collecting oauthlib>=3.0.0
+  Downloading oauthlib-3.2.2-py3-none-any.whl (151 kB)
+Collecting PySocks!=1.5.7,>=1.5.6
+  Downloading PySocks-1.7.1-py3-none-any.whl (16 kB)
+Collecting jeepney>=0.6
+  Downloading jeepney-0.7.1-py3-none-any.whl (54 kB)
+Collecting dataclasses
+  Downloading dataclasses-0.8-py3-none-any.whl (19 kB)
+Collecting backports.weakref
+  Downloading backports.weakref-1.0.post1-py2.py3-none-any.whl (5.2 kB)
+Collecting immutables>=0.9
+  Downloading immutables-0.19-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (116 kB)
+Collecting pyrsistent>=0.14.0
+  Downloading pyrsistent-0.18.0-cp36-cp36m-manylinux1_x86_64.whl (117 kB)
+Collecting attrs>=17.4.0
+  Downloading attrs-22.2.0-py3-none-any.whl (60 kB)
+Collecting entrypoints
+  Downloading entrypoints-0.4-py3-none-any.whl (5.3 kB)
+Collecting databricks-cli>=0.8.7
+  Downloading databricks-cli-0.17.8.tar.gz (85 kB)
+Collecting gitpython>=2.1.0
+  Downloading GitPython-3.1.18-py3-none-any.whl (170 kB)
+Collecting gitdb<5,>=4.0.1
+  Downloading gitdb-4.0.9-py3-none-any.whl (63 kB)
+Collecting smmap<6,>=3.0.1
+  Downloading smmap-5.0.0-py3-none-any.whl (24 kB)
+Building wheels for collected packages: json-logging-py, fusepy, wrapt, contextvars, databricks-cli
+  Building wheel for json-logging-py (setup.py): started
+  Building wheel for json-logging-py (setup.py): finished with status 'done'
+  Created wheel for json-logging-py: filename=json_logging_py-0.2-py3-none-any.whl size=3924 sha256=882e9b29b08b0894081e942dec4e31649c218a90f3e4e10ddc5622dfddc8ac96
+  Stored in directory: /root/.cache/pip/wheels/e2/1d/52/535a274b9c2ce7d4064838f2bdb62013801281ef7d7f21e2ee
+  Building wheel for fusepy (setup.py): started
+  Building wheel for fusepy (setup.py): finished with status 'done'
+  Created wheel for fusepy: filename=fusepy-3.0.1-py3-none-any.whl size=10503 sha256=72de1c35ce5d931015d05517e524c748832a93193ab2e6f102c3fcfc63404fee
+  Stored in directory: /root/.cache/pip/wheels/21/5c/83/1dd7e8a232d12227e5410120f4374b33adeb4037473105b079
+  Building wheel for wrapt (setup.py): started
+  Building wheel for wrapt (setup.py): finished with status 'done'
+  Created wheel for wrapt: filename=wrapt-1.12.1-cp36-cp36m-linux_x86_64.whl size=76185 sha256=36a78aaabf666ca2f7a6e7bd13ae59e20f62388197f701745ae5cf4dd6d87dcf
+  Stored in directory: /root/.cache/pip/wheels/32/42/7f/23cae9ff6ef66798d00dc5d659088e57dbba01566f6c60db63
+  Building wheel for contextvars (setup.py): started
+  Building wheel for contextvars (setup.py): finished with status 'done'
+  Created wheel for contextvars: filename=contextvars-2.4-py3-none-any.whl size=7681 sha256=ef57a3f7ce5e5e2d1b2dc4590a01720382f4196bc409abd08f63aac889fdd494
+  Stored in directory: /root/.cache/pip/wheels/41/11/53/911724983aa48deb94792432e14e518447212dd6c5477d49d3
+  Building wheel for databricks-cli (setup.py): started
+  Building wheel for databricks-cli (setup.py): finished with status 'done'
+  Created wheel for databricks-cli: filename=databricks_cli-0.17.8-py3-none-any.whl size=145492 sha256=876fd2659ff3812444beab08d92f27f2ef27b40c879cd76712ab9a582784413e
+  Stored in directory: /root/.cache/pip/wheels/03/ea/c8/85739be513930e3d6f34649a8b9304c23d23172f39571d2fb7
+Successfully built json-logging-py fusepy wrapt contextvars databricks-cli
+Installing collected packages: pycparser, cffi, urllib3, PyJWT, idna, cryptography, charset-normalizer, typing-extensions, requests, pyasn1, zipp, rsa, pyasn1-modules, protobuf, portalocker, oauthlib, msal, immutables, cachetools, requests-oauthlib, pyrsistent, msal-extensions, MarkupSafe, isodate, importlib-metadata, googleapis-common-protos, google-auth, distro, dataclasses, contextvars, azure-core, attrs, Werkzeug, smmap, pyyaml, opencensus-context, msrest, jsonschema, Jinja2, itsdangerous, google-api-core, dotnetcore2, cloudpickle, click, azureml-dataprep-rslex, azureml-dataprep-native, azure-identity, adal, wrapt, websocket-client, tabulate, PySocks, pyparsing, pyopenssl, pynacl, pygments, pyarrow, psutil, opencensus, msrestazure, jmespath, jeepney, gitdb, Flask, bcrypt, backports.weakref, azureml-dataprep, azure-mgmt-core, azure-common, argcomplete, SecretStorage, pkginfo, pathspec, paramiko, packaging, opencensus-ext-azure, ndg-httpsclient, knack, jsonpickle, inference-schema, humanfriendly, gunicorn, gitpython, fusepy, flask-cors, entrypoints, docker, databricks-cli, contextlib2, backports.tempfile, azureml-dataset-runtime, azure-mgmt-storage, azure-mgmt-resource, azure-mgmt-keyvault, azure-mgmt-containerregistry, azure-mgmt-authorization, azure-graphrbac, mlflow-skinny, json-logging-py, configparser, azureml-inference-server-http, azureml-core, azure-storage-blob, azureml-mlflow, azureml-defaults
+Successfully installed Flask-2.0.3 Jinja2-3.0.3 MarkupSafe-2.0.1 PyJWT-2.4.0 PySocks-1.7.1 SecretStorage-3.3.3 Werkzeug-2.0.3 adal-1.2.7 argcomplete-2.1.2 attrs-22.2.0 azure-common-1.1.28 azure-core-1.24.2 azure-graphrbac-0.61.1 azure-identity-1.7.0 azure-mgmt-authorization-2.0.0 azure-mgmt-containerregistry-10.0.0 azure-mgmt-core-1.3.2 azure-mgmt-keyvault-10.0.0 azure-mgmt-resource-21.1.0 azure-mgmt-storage-20.0.0 azure-storage-blob-12.13.0 azureml-core-1.47.0 azureml-dataprep-4.5.7 azureml-dataprep-native-38.0.0 azureml-dataprep-rslex-2.11.4 azureml-dataset-runtime-1.47.0 azureml-defaults-1.47.0 azureml-inference-server-http-0.7.7 azureml-mlflow-1.48.0 backports.tempfile-1.0 backports.weakref-1.0.post1 bcrypt-4.0.1 cachetools-4.2.4 cffi-1.15.1 charset-normalizer-2.0.12 click-8.0.4 cloudpickle-2.2.1 configparser-3.7.4 contextlib2-21.6.0 contextvars-2.4 cryptography-38.0.4 databricks-cli-0.17.8 dataclasses-0.8 distro-1.8.0 docker-5.0.3 dotnetcore2-3.1.23 entrypoints-0.4 flask-cors-3.0.10 fusepy-3.0.1 gitdb-4.0.9 gitpython-3.1.18 google-api-core-2.8.2 google-auth-2.22.0 googleapis-common-protos-1.56.3 gunicorn-20.1.0 humanfriendly-10.0 idna-3.6 immutables-0.19 importlib-metadata-4.8.3 inference-schema-1.4.2.1 isodate-0.6.1 itsdangerous-2.0.1 jeepney-0.7.1 jmespath-0.10.0 json-logging-py-0.2 jsonpickle-2.2.0 jsonschema-3.2.0 knack-0.10.1 mlflow-skinny-1.23.1 msal-1.26.0 msal-extensions-0.3.1 msrest-0.7.1 msrestazure-0.6.4 ndg-httpsclient-0.5.1 oauthlib-3.2.2 opencensus-0.11.3 opencensus-context-0.1.3 opencensus-ext-azure-1.1.12 packaging-21.3 paramiko-2.12.0 pathspec-0.9.0 pkginfo-1.9.6 portalocker-2.7.0 protobuf-3.19.6 psutil-5.9.6 pyarrow-6.0.1 pyasn1-0.5.1 pyasn1-modules-0.3.0 pycparser-2.21 pygments-2.14.0 pynacl-1.5.0 pyopenssl-22.1.0 pyparsing-3.0.7 pyrsistent-0.18.0 pyyaml-6.0.1 requests-2.27.1 requests-oauthlib-1.3.1 rsa-4.9 smmap-5.0.0 tabulate-0.8.10 typing-extensions-4.1.1 urllib3-1.26.18 websocket-client-1.3.1 wrapt-1.12.1 zipp-3.6.0
+
+done
+#
+# To activate this environment, use
+#
+#     $ conda activate /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Removing intermediate container a971deadfdf8
+ ---> dc44708858ec
+Step 9/17 : ENV PATH /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/bin:$PATH
+ ---> Running in 068c28ad191e
+Removing intermediate container 068c28ad191e
+ ---> abb846d36e22
+Step 10/17 : ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61
+ ---> Running in 6188bff254bf
+Removing intermediate container 6188bff254bf
+ ---> 4a4c38f8dc96
+Step 11/17 : ENV LD_LIBRARY_PATH /azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/lib:$LD_LIBRARY_PATH
+ ---> Running in 5ed0f0b7584c
+Removing intermediate container 5ed0f0b7584c
+ ---> 6871269aeec5
+Step 12/17 : ENV CONDA_DEFAULT_ENV=azureml_809a074975457de1dd27bdfcf2d79d61 CONDA_PREFIX=/azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61
+ ---> Running in 3324239b9b72
+Removing intermediate container 3324239b9b72
+ ---> 541883e6f9f9
+Step 13/17 : COPY azureml-environment-setup/spark_cache.py azureml-environment-setup/log4j.properties /azureml-environment-setup/
+ ---> 07f8faee5a2b
+Step 14/17 : RUN if [ $SPARK_HOME ]; then /bin/bash -c '$SPARK_HOME/bin/spark-submit  /azureml-environment-setup/spark_cache.py'; fi
+ ---> Running in 8d25ff9fa21d
+Removing intermediate container 8d25ff9fa21d
+ ---> 7a9083611db3
+Step 15/17 : RUN rm -rf azureml-environment-setup
+ ---> Running in bd6b1d57740c
+Removing intermediate container bd6b1d57740c
+ ---> a74f54f60cfc
+Step 16/17 : ENV AZUREML_ENVIRONMENT_IMAGE True
+ ---> Running in 70b0254ca71c
+Removing intermediate container 70b0254ca71c
+ ---> 91ea85845bc4
+Step 17/17 : CMD ["bash"]
+ ---> Running in 653618c81092
+Removing intermediate container 653618c81092
+ ---> 36b2102a758b
+Successfully built 36b2102a758b
+Successfully tagged azureml/azureml_46e63a647aa93dc08547cc8aca7e41e8:latest
+
+
+
+
+[2023-12-08T17:42:20.311193] Logging experiment running status in history service.
+Running: ['docker', 'run', '--name', 'mslearn-diabetes_1702057179_5cd71132', '--rm', '-v', '/tmp/azureml_runs/mslearn-diabetes_1702057179_5cd71132:/azureml-run', '--shm-size', '2g', '-e', 'AZUREML_LOCALRUN=true', '-e', 'AZUREML_CURRENT_CLOUD_METADATA={"Portal":"https://portal.azure.com","Authentication":{"AzureDataLakeStoreFileSystem":null,"SqlServerHostname":null,"AzureDataLakeAnalyticsCatalogAndJob":null,"KeyVaultDns":null,"Storage":null,"AzureFrontDoorEndpointSuffix":null},"Media":"https://rest.media.azure.net","GraphAudience":"https://graph.windows.net/","Graph":"https://graph.windows.net/","Name":"AzureCloud","Suffixes":{"LoginEndpoint":null,"Audiences":null,"Tenant":null,"IdentityProvider":null},"Batch":"https://batch.core.windows.net/","ResourceManager":"https://management.azure.com/","VmImageAliasDoc":"https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json","ActiveDirectoryDataLake":"https://datalake.azure.net/","SqlManagement":"https://management.core.windows.net:8443/","Gallery":"https://gallery.azure.com/"}', '-e', 'AZUREML_CURRENT_CLOUD=AzureCloud', '-e', 'MLFLOW_DISABLE_ENV_MANAGER_CONDA_WARNING=True', '-e', 'MLFLOW_TRACKING_TOKEN=eyJhbGciOiJSUzI1NiIsImtpZCI6IkRFMzhCNjhENjVEQkM5MTZGNDExNDQ3NTI2OTAyNUEzRUM4OTIzRTMiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoiQ29udHJpYnV0b3IiLCJzY29wZSI6Ii9zdWJzY3JpcHRpb25zLzhkOWUxYzc3LWZmNzItNGI4Yi1hZTYwLWIwYjQ2YTRkOTlhOC9yZXNvdXJjZUdyb3Vwcy9yZy1kcDEwMC1sYWJzL3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFjaGluZUxlYXJuaW5nU2VydmljZXMvd29ya3NwYWNlcy9tbHctZHAxMDAtbGFicyIsImFjY291bnRpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsIndvcmtzcGFjZUlkIjoiZjJlZjA2YTQtODE3Yi00YzE4LTk3ODgtZjBlMWM4MjMyYzIyIiwicHJvamVjdGlkIjoiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwiZGlzY292ZXJ5IjoidXJpOi8vZGlzY292ZXJ5dXJpLyIsInRpZCI6IjNlYzkyOTY5LTVhNTEtNGYxOC04YWM5LWVmOThmYmFmYTk3OCIsIm9pZCI6IjM0ZDQyNzA3LWU5YzctNGIzMi04NjM4LTUyNzUzNjU2MjIzYSIsInB1aWQiOiIxMDAzMjAwMEVERjY1RjIzIiwiaXNzIjoiYXp1cmVtbCIsImFwcGlkIjoiSHVnbyBNZWRlaXJvcyBTb3V0byIsImV4cCI6MTcwMzg3ODc4MCwiYXVkIjoiYXp1cmVtbCJ9.TBD3WWiz4ljcr24WUdQJC7GAu5DIlcSQJNsYHwkSSSr-CITrALPZRAMuty0at23tfs9k346ZV1h4BZoSbMOA5FNIPB6oOB8B4MEwYrIug6A4A34arGNBZDu8Yd2Dq5FYBLxHy7Xp2RCA9oWSmcmlFtXi_4-SDv4VkxMWQnj_c3NOBv_aXOhNJlevIW9OV2voAaZSlUG3fFa-MOwwlIewM0BwbTiqnqPZK8fzdVdTh59_R8wWfrkGiJqypM-rJC7KiI_A4BOxDkH4p55E-4VyadD964xh-Jsq77p420tnObcnlZUO3aS0ZRb9uUU-YEgpnkxgVSfhlK2qxMb7SwgCFA', '-e', 'MLFLOW_TRACKING_URI=azureml://eastus2.api.azureml.ms/mlflow/v1.0/subscriptions/8d9e1c77-ff72-4b8b-ae60-b0b46a4d99a8/resourceGroups/rg-dp100-labs/providers/Microsoft.MachineLearningServices/workspaces/mlw-dp100-labs', '-e', 'MLFLOW_RUN_ID=mslearn-diabetes_1702057179_5cd71132', '-e', 'MLFLOW_EXPERIMENT_NAME=mslearn-diabetes', '-e', 'MLFLOW_EXPERIMENT_ID=a419d40e-7c6b-4cc1-9d2c-906a73371c9b', '-e', 'EXAMPLE_ENV_VAR=EXAMPLE_VALUE', '-e', 'AZUREML_CONTEXT_MANAGER_TRACKUSERERROR=eyJTa2lwSGlzdG9yeUltcG9ydENoZWNrIjoiRmFsc2UifQ==', '-e', 'AZUREML_CONTEXT_MANAGER_RUNHISTORY=eyJPdXRwdXRDb2xsZWN0aW9uIjp0cnVlLCJEaXJlY3Rvcmllc1RvV2F0Y2giOlsibG9ncyJdLCJFbmFibGVNTGZsb3dUcmFja2luZyI6dHJ1ZSwic25hcHNob3RQcm9qZWN0Ijp0cnVlfQ==', '-e', 'AZUREML_CONTEXT_MANAGER_PROJECTPYTHONPATH=bnVsbA==', '-e', 'AZUREML_RUN_TOKEN_EXPIRY=1703878780', '-e', 'AZUREML_RUN_TOKEN=eyJhbGciOiJSUzI1NiIsImtpZCI6IkRFMzhCNjhENjVEQkM5MTZGNDExNDQ3NTI2OTAyNUEzRUM4OTIzRTMiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoiQ29udHJpYnV0b3IiLCJzY29wZSI6Ii9zdWJzY3JpcHRpb25zLzhkOWUxYzc3LWZmNzItNGI4Yi1hZTYwLWIwYjQ2YTRkOTlhOC9yZXNvdXJjZUdyb3Vwcy9yZy1kcDEwMC1sYWJzL3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFjaGluZUxlYXJuaW5nU2VydmljZXMvd29ya3NwYWNlcy9tbHctZHAxMDAtbGFicyIsImFjY291bnRpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsIndvcmtzcGFjZUlkIjoiZjJlZjA2YTQtODE3Yi00YzE4LTk3ODgtZjBlMWM4MjMyYzIyIiwicHJvamVjdGlkIjoiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwiZGlzY292ZXJ5IjoidXJpOi8vZGlzY292ZXJ5dXJpLyIsInRpZCI6IjNlYzkyOTY5LTVhNTEtNGYxOC04YWM5LWVmOThmYmFmYTk3OCIsIm9pZCI6IjM0ZDQyNzA3LWU5YzctNGIzMi04NjM4LTUyNzUzNjU2MjIzYSIsInB1aWQiOiIxMDAzMjAwMEVERjY1RjIzIiwiaXNzIjoiYXp1cmVtbCIsImFwcGlkIjoiSHVnbyBNZWRlaXJvcyBTb3V0byIsImV4cCI6MTcwMzg3ODc4MCwiYXVkIjoiYXp1cmVtbCJ9.TBD3WWiz4ljcr24WUdQJC7GAu5DIlcSQJNsYHwkSSSr-CITrALPZRAMuty0at23tfs9k346ZV1h4BZoSbMOA5FNIPB6oOB8B4MEwYrIug6A4A34arGNBZDu8Yd2Dq5FYBLxHy7Xp2RCA9oWSmcmlFtXi_4-SDv4VkxMWQnj_c3NOBv_aXOhNJlevIW9OV2voAaZSlUG3fFa-MOwwlIewM0BwbTiqnqPZK8fzdVdTh59_R8wWfrkGiJqypM-rJC7KiI_A4BOxDkH4p55E-4VyadD964xh-Jsq77p420tnObcnlZUO3aS0ZRb9uUU-YEgpnkxgVSfhlK2qxMb7SwgCFA', '-e', 'AZUREML_ROOT_RUN_ID=mslearn-diabetes_1702057179_5cd71132', '-e', 'AZUREML_COMPUTE_RECORD_ARTIFACT_ORIGIN=ComputeRecord', '-e', 'AZUREML_COMPUTE_RECORD_ARTIFACT_PATH=compute_record.txt', '-e', 'HBI_WORKSPACE_JOB=false', '-e', 'AZUREML_RUN_TOKEN_RAND=649225ba-fe63-4aa3-8bf8-d6502d138e87', '-e', 'AZUREML_RUN_TOKEN_PASS=d0dfdf9a-5bab-4c2c-86ee-c07863ce0e4f', '-e', 'PYTHONUNBUFFERED=True', '-e', 'AZUREML_COMMUNICATOR=None', '-e', 'AZUREML_FRAMEWORK=Python', '-e', 'AZUREML_EXPERIMENT_ID=a419d40e-7c6b-4cc1-9d2c-906a73371c9b', '-e', 'AZUREML_ARM_PROJECT_NAME=mslearn-diabetes', '-e', 'AZUREML_ARM_WORKSPACE_NAME=mlw-dp100-labs', '-e', 'AZUREML_ARM_SUBSCRIPTION=8d9e1c77-ff72-4b8b-ae60-b0b46a4d99a8', '-e', 'AZUREML_ARM_RESOURCEGROUP=rg-dp100-labs', '-e', 'AZUREML_EXPERIMENT_SCOPE=/subscriptions/8d9e1c77-ff72-4b8b-ae60-b0b46a4d99a8/resourceGroups/rg-dp100-labs/providers/Microsoft.MachineLearningServices/workspaces/mlw-dp100-labs/experiments/mslearn-diabetes', '-e', 'AZUREML_WORKSPACE_ID=f2ef06a4-817b-4c18-9788-f0e1c8232c22', '-e', 'AZUREML_WORKSPACE_SCOPE=/subscriptions/8d9e1c77-ff72-4b8b-ae60-b0b46a4d99a8/resourceGroups/rg-dp100-labs/providers/Microsoft.MachineLearningServices/workspaces/mlw-dp100-labs', '-e', 'AZUREML_DATA_CONTAINER_ID=dcid.mslearn-diabetes_1702057179_5cd71132', '-e', 'AZUREML_DISCOVERY_SERVICE_ENDPOINT=https://eastus2.api.azureml.ms/discovery', '-e', 'AZUREML_RUN_HISTORY_SERVICE_ENDPOINT=https://eastus2.api.azureml.ms', '-e', 'AZUREML_SERVICE_CERT_ENDPOINT=https://eastus2.cert.api.azureml.ms', '-e', 'AZUREML_SERVICE_ENDPOINT=https://eastus2.api.azureml.ms', '-e', 'AZUREML_RUN_CONFIGURATION=azureml-setup/mutated_run_configuration.json', '-e', 'AZUREML_INSTRUMENTATION_KEY=2d586587-4df8-4336-9af2-277fe3c5d9cd', '-e', 'AZUREML_DRIVERLOG_PATH=azureml-logs/driver_log.txt', '-e', 'TELEMETRY_LOGS=azureml-logs/telemetry_logs/', '-e', 'FAIRLEARN_LOGS=azureml-logs/telemetry_logs/fairlearn_log.txt', '-e', 'INTERPRET_TEXT_LOGS=azureml-logs/telemetry_logs/interpret_text_log.txt', '-e', 'INTERPRET_C_LOGS=azureml-logs/telemetry_logs/interpret_community_log.txt', '-e', 'AZUREML_JOBRELEASELOG_PATH=azureml-logs/job_release_log.txt', '-e', 'AZUREML_JOBPREPLOG_PATH=azureml-logs/job_prep_log.txt', '-e', 'AZUREML_CONTROLLOG_PATH=azureml-logs/control_log.txt', '-e', 'AZUREML_LOGDIRECTORY_PATH=azureml-logs/', '-e', 'AZUREML_PIDFILE_PATH=azureml-setup/pid.txt', '-e', 'AZUREML_RUN_ID=mslearn-diabetes_1702057179_5cd71132', 'azureml/azureml_46e63a647aa93dc08547cc8aca7e41e8', '/bin/bash', '-c', 'cd /azureml-run && "/azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/bin/python" "azureml-setup/run_script.py" "/azureml-envs/azureml_809a074975457de1dd27bdfcf2d79d61/bin/python" "azureml-setup/context_manager_injector.py" "-i" "ProjectPythonPath:context_managers.ProjectPythonPath" "-i" "RunHistory:context_managers.RunHistory" "-i" "TrackUserError:context_managers.TrackUserError" "diabetes_experiment.py"']
+Streaming log file azureml-logs/70_driver_log.txt
+Starting the daemon thread to refresh tokens in background for process with pid = 1
+Script process exited with code 0
+Uploading driver log...
+Finalizing run...
+[2023-12-08T17:42:30.044005] get vm size and vm region successfully.
+[2023-12-08T17:42:30.054968] get compute meta data successfully.
+[2023-12-08T17:42:30.154059] post artifact meta request successfully.
+[2023-12-08T17:42:30.189897] upload compute record artifact successfully.
+
+Script process exited with code 0
+
+
+
+Uploading control log...
